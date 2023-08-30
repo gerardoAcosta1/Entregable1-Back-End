@@ -14,7 +14,7 @@ CREATE TABLE "courses" (
   "description" varchar(250) NOT NULL,
   "level" varchar(30) NOT NULL,
   "category_id" int UNIQUE NOT NULL,
-  "teacher" varchar(50) NOT NULL
+  "teacher" int NOT NULL
 );
 
 CREATE TABLE "users" (
@@ -56,6 +56,8 @@ ALTER TABLE "courses_videos" ADD FOREIGN KEY ("course_id") REFERENCES "courses" 
 
 ALTER TABLE "courses_videos" ADD FOREIGN KEY ("video_id") REFERENCES "videos" ("id");
 
+ALTER TABLE "courses" ADD FOREIGN KEY ("teacher") REFERENCES "users" ("id");
+
 -------------------inserts-----------------------
 INSERT INTO role_user (id, name_role)
 VALUES
@@ -80,11 +82,11 @@ VALUES
 
 INSERT INTO courses (title, description, level, category_id, teacher) 
 VALUES
-('JavaScript', 'Fundaments of JavaScript', 'Basic', 1, 'Ian Rosas');
+('JavaScript', 'Fundaments of JavaScript', 'Basic', 1, 3);
 
 INSERT INTO courses (title, description, level, category_id, teacher) 
 VALUES
-('Node', 'servers with node', 'intermediate', 2, 'Ian Rosas');
+('Node', 'servers with node', 'intermediate', 2, 3);
 
 
 
@@ -116,7 +118,8 @@ VALUES
 (1, 1),(2,2),(3,1),(3,2);
 
 SELECT 
-    u.name AS user_name, 
+    u.name AS user_name,
+    us.name AS teacher_name, 
     v.title AS video_title
 FROM 
     users u
@@ -124,6 +127,8 @@ JOIN
     user_courses uc ON u.id = uc.user_id
 JOIN 
     courses c ON uc.course_id = 1
+JOIN 
+    users us ON us.id = c.teacher
 JOIN 
     courses_videos cv ON c.id = cv.course_id
 JOIN 
@@ -136,7 +141,7 @@ SELECT
     u.name AS user_name,
     v.title AS video_title,
     c.title AS course_title,
-    c.teacher AS course_teacher,
+    us.name AS teacher_name, 
     c.level AS course_level,
     c.description AS course_description,
     cat.name AS category_name
@@ -146,6 +151,8 @@ JOIN
     user_courses uc ON u.id = uc.user_id
 JOIN
     courses c ON uc.course_id = 1
+JOIN 
+    users us ON us.id = c.teacher
 JOIN
     courses_videos cv ON c.id = cv.course_id
 JOIN
@@ -161,7 +168,7 @@ SELECT
     u.name AS user_name,
     v.title AS video_title,
     c.title AS course_title,
-    c.teacher AS course_teacher,
+    us.name AS teacher_name, 
     c.level AS course_level,
     c.description AS course_description,
     cat.name AS category_name
@@ -171,6 +178,8 @@ JOIN
     user_courses uc ON u.id = uc.user_id
 JOIN
     courses c ON uc.course_id = 2
+JOIN 
+    users us ON us.id = c.teacher
 JOIN
     courses_videos cv ON c.id = cv.course_id
 JOIN
@@ -179,7 +188,6 @@ JOIN
     categories cat ON c.category_id = cat.id
 WHERE
     c.id = 2;
-
 
 
 
