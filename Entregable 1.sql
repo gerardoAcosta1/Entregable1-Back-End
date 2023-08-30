@@ -105,14 +105,21 @@ INSERT INTO user_courses (user_id, course_id)
 VALUES
 (1, 1),(2,2),(3,1),(3,2);
 
-SELECT u.name AS user_name, v.title AS video_title
-FROM users u
-JOIN user_courses uc ON u.id = uc.user_id
-JOIN courses c ON uc.course_id = 1
-JOIN courses_videos cv ON c.id = cv.course_id
-JOIN videos v ON cv.video_id = v.id
-WHERE c.id = 1;
-
+SELECT 
+    u.name AS user_name, 
+    v.title AS video_title
+FROM 
+    users u
+JOIN 
+    user_courses uc ON u.id = uc.user_id
+JOIN 
+    courses c ON uc.course_id = 1
+JOIN 
+    courses_videos cv ON c.id = cv.course_id
+JOIN 
+    videos v ON cv.video_id = v.id
+WHERE 
+    c.id = 1;
 ---consulta alumnos, maestros, categoria y videos del curso 1
 
 SELECT
