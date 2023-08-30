@@ -186,6 +186,7 @@ GROUP BY
   u.name, c.title, th.name, c.level, c.description, cat.name;
 
 
+ 
 
 
 
