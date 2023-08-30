@@ -56,7 +56,7 @@ ALTER TABLE "courses_videos" ADD FOREIGN KEY ("course_id") REFERENCES "courses" 
 
 ALTER TABLE "courses_videos" ADD FOREIGN KEY ("video_id") REFERENCES "videos" ("id");
 
-
+-------------------inserts-----------------------
 INSERT INTO role_user (id, name_role)
 VALUES
 (1, 'Student'),
@@ -76,6 +76,8 @@ INSERT INTO users (name,email, password, age, role_id )
 VALUES
 ('Ian Rosas', 'Ian@gmail.com', '12345', 33, 2);
 
+
+
 INSERT INTO courses (title, description, level, category_id, teacher) 
 VALUES
 ('JavaScript', 'Fundaments of JavaScript', 'Basic', 1, 'Ian Rosas');
@@ -84,9 +86,13 @@ INSERT INTO courses (title, description, level, category_id, teacher)
 VALUES
 ('Node', 'servers with node', 'intermediate', 2, 'Ian Rosas');
 
+
+
 INSERT INTO categories (id, name)
 VALUES 
 (1, 'Programacion'), (2,'Server');
+
+
 
 INSERT INTO videos (id, title, url)
 VALUES
@@ -96,10 +102,14 @@ INSERT INTO videos (id, title, url)
 VALUES
 (2, 'Server with node', 'https://www.youtube.com/watch?v=VShtPwEkDD0');
 
+
+
 INSERT INTO courses_videos (course_id, video_id)
 VALUES
 (1,1),
 (2,2);
+
+
 
 INSERT INTO user_courses (user_id, course_id)
 VALUES
