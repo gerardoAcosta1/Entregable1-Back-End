@@ -48,7 +48,7 @@ ALTER TABLE "user_courses" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id")
 
 ALTER TABLE "user_courses" ADD FOREIGN KEY ("course_id") REFERENCES "courses" ("id");
 
-ALTER TABLE "role_user" ADD FOREIGN KEY ("id") REFERENCES "users" ("role_id");
+ALTER TABLE "users" ADD FOREIGN KEY ("role_id") REFERENCES "role_user" ("id");
 
 ALTER TABLE "categories" ADD FOREIGN KEY ("id") REFERENCES "courses" ("category_id");
 
