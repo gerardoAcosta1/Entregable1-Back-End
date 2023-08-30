@@ -101,7 +101,7 @@ VALUES
 
 INSERT INTO videos (title, url, course_id)
 VALUES
-('JavaScript Fundaments', 'https://www.youtube.com/watch?v=Z4TuS0HEJP8', 1);
+('Arrays with javaScript', 'https://www.youtube.com/watch?v=Z4TuS0HEJP8', 1);
 
 
 INSERT INTO user_courses (user_id, course_id)
@@ -180,6 +180,7 @@ WHERE
     c.id = 2
 GROUP BY
   u.name, c.title, th.name, c.level, c.description, cat.name;
+
 
 
  
